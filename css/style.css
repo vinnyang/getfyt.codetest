@@ -1,0 +1,20 @@
+div, img{border: 0; padding: 0;}
+
+
+.galleryFrm{height: 400px; width: 85%; margin: 0 auto; background-color: #666;}
+.galleryFrm .galleryBig{max-width: 100%;}
+
+
+.galleryLi{ width: 100%; overflow-x: scroll; height: 80px;}
+.galleryLi .galleryThumbs{max-width: 80px;max-height: 80px; display: inline-block; vertical-align: middle;}
+
+@media screen and (min-width: 768px){
+	.galleryFrm{background-color: #999;}
+	.galleryLi{}
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px){
+	.galleryFrm{background-color: #fff;}
+	.galleryLi{}
+}
+
