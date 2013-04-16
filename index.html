@@ -15,25 +15,49 @@
        <div class="galleryFrm">
            <div class="imgWrapper">
                <img class="galleryBig" src="images/download1.png" alt="Lorem ipsum dolor sit amet">
+               <div class="caption"></div>
            </div>
        </div>
        <div class="galleryLi">
-           <img class="galleryThumbs" src="images/download1.png" alt="Lorem ipsum dolor sit amet">
+        <div class="thumbWrapper">
+           <img class="galleryThumbs selected" src="images/download1.png" alt="Lorem ipsum dolor sit amet">
            <img class="galleryThumbs" src="images/download2.png" alt="consectetur adipisicing elit.">
            <img class="galleryThumbs" src="images/download3.jpg" alt="Molestiae, at Cum, inventore deserunt">
            <img class="galleryThumbs" src="images/download4.jpg" alt="incidunt non asperiores perspiciatis">
            <img class="galleryThumbs" src="images/download5.jpg" alt="officiis alias ut hic fugiat distinctio">
            <img class="galleryThumbs" src="images/download6.jpg" alt="laborum sed ipsam quo enim qui">
            <img class="galleryThumbs" src="images/download7.jpg" alt="repudiandae consequuntur recusandae id.">
-       </div>
+           </div>
+        </div>
     </body>
 </html>
 <script>
     $(function () {
-        var target = $('.imgWrapper img');
-        $('img.galleryThumbs').on('click', function () {
-            var this_scr = $(this).attr('src'), this_desc = $(this).attr('alt');
-            target.attr('src', this_scr)
+        var $target = $('.imgWrapper img'), 
+            $thumbWrapper = $('.thumbWrapper'),
+            $thumbs = $('img.galleryThumbs'),
+            $selectedImg = $('.selected'), $cap = $('.caption');
+
+        $thumbWrapper.css('width', $thumbs.length * 161);
+        setCaption();
+
+        $thumbs.on('click', function () {
+            var this_scr = $(this).attr('src'), 
+                this_desc = $(this).attr('alt');
+
+            $(this).addClass('selected').siblings().removeClass('selected');
+            setCaption(this);
+
+            $target.attr('src', this_scr).attr('alt', this_desc);
         });
+
+        function setCaption(obj) {
+            if (!obj) {
+                $cap.text($selectedImg.attr('alt'));
+            }else{
+               $cap.text($(obj).attr('alt')); 
+            }
+            
+        }
     });
 </script>
